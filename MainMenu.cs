@@ -39,11 +39,11 @@ namespace RPSLS
         public void ScoreCheck()
         {
 
-            while (counter != 3 && OpponentCounter != 3) 
+            while (counter < 3 && OpponentCounter < 3) 
             { Console.WriteLine($"Current score is {counter} to {OpponentCounter}.");
-                string Gamer1Choice = Player1.GetChoice();
+                string Gamer1Choice = ValidityCheck(Player1.GetChoice());
                 Console.WriteLine($"Player1 plays {Gamer1Choice}");
-               string Gamer2Choice = Player2.GetChoice();
+               string Gamer2Choice = ValidityCheck(Player2.GetChoice());
                 Console.WriteLine($"Player2 plays {Gamer2Choice}");
 
 
@@ -60,10 +60,11 @@ namespace RPSLS
 
                 }
             }
+            DisplayWinner();
         }
         public void NumbersOfPlayers()
         {
-            Console.WriteLine("Please enter amount of human players playing, choose between 0 and 2.");
+            Console.WriteLine("Please enter amount of human players playing, choose between 1 and 2.");
             int Players = int.Parse(Console.ReadLine());
             CreatePlayers(Players);
         }
@@ -81,11 +82,6 @@ namespace RPSLS
                 Player1 = new Human();
                 Player2 = new Ai();
             }
-            else if (number == 0)
-            {
-                Player1 = new Ai();
-                Player2 = new Ai();
-            }
             else
             {
                 Console.WriteLine("Not an option");
@@ -93,50 +89,47 @@ namespace RPSLS
             }
 
         }
-        Double FindWhoWon(string Player1Choice, string Player2Choice)
+        Double FindWhoWon(string Player1Choice, string Player2Choice)                                                                                          
         {
             switch (Player1Choice)
             {
                 case "rock":
                     {
                         int Player1Point = 2;
-                        int Player2Point = RockList.BinarySearch(Player2Choice);
+                        int Player2Point = RockList.IndexOf(Player2Choice);
                         int Total = Player1Point - Player2Point;
-                        Console.WriteLine(Player2Point);
-                        Console.WriteLine(Player2Choice);
                         return Total;
                     }
                 case "paper":
                     {
                         int Player1Point = 2;
-                        int Player2Point = PaperList.BinarySearch(Player2Choice);
+                        int Player2Point = PaperList.IndexOf(Player2Choice);
                         int Total = Player1Point - Player2Point;
                         return Total;
                     }
                 case "scissor":
                     {
                         int Player1Point = 2;
-                        int Player2Point = ScissorList.BinarySearch(Player2Choice);
+                        int Player2Point = ScissorList.IndexOf(Player2Choice);
                         int Total = Player1Point - Player2Point;
                         return Total;
                     }
                 case "lizard":
                     {
                         int Player1Point = 2;
-                        int Player2Point = LizardList.BinarySearch(Player2Choice);
+                        int Player2Point = LizardList.IndexOf(Player2Choice);
                         int Total = Player1Point - Player2Point;
                         return Total;
                     }
                 case "spock":
                     {
                         int Player1Point = 2;
-                        int Player2Point = SpockList.BinarySearch(Player2Choice);
+                        int Player2Point = SpockList.IndexOf(Player2Choice);
                         int Total = Player1Point - Player2Point;
                         return Total;
                     }
                 default:
                     {
-                        Console.WriteLine(" That wasn't an option.");
                         return 0;
                     }
 
@@ -147,33 +140,61 @@ namespace RPSLS
             if (counter == 3)
             {
                 Console.WriteLine("Player 1 won the game!");
-                Console.WriteLine("Enter yes to play again!");
                 Console.ReadLine();
-                string answer = Console.ReadLine();
-                PlayAgain(answer);
+
 
             }
             else
             {
                 Console.WriteLine("Player 2 won the game!");
-                Console.WriteLine("Enter yes to play again!");
-                string answer = Console.ReadLine();
-                PlayAgain(answer);
+                Console.ReadLine();
             }
         }
-        public void PlayAgain(string answer)
+        public string PlayAgain()
         {
+            Console.WriteLine("Enter yes to play again!");
+            string answer = Console.ReadLine();
+
+
             if (answer == "yes")
             {
-                NewGame = new GameStarter();
-                NewGame.ScoreCheck();
-            }
+                return "yes";
 
+            }
             else
             {
                 Console.WriteLine("See You Again!");
                 Console.ReadLine();
+                return "no";
 
+            }
+        }
+        public string ValidityCheck(string check)
+        {
+            if (check == "rock")
+            {
+                return check;
+            }
+            else if (check == "paper")
+            {
+                return check;
+            }
+            else if (check == "lizard")
+            {
+                return check;
+            }
+            else if (check == "spock")
+            {
+                return check;
+            }
+            else if (check == "scissor")
+            {
+                return check;
+            }
+            else
+            {
+                Console.WriteLine("That's not an option.");
+                return Player1.GetChoice();
             }
         }
     }

@@ -22,8 +22,5 @@ namespace RPSLS
             string Choice = Console.ReadLine();
             return Choice;
         }
-
     }
-
-
 }

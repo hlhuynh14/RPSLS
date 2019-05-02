@@ -22,7 +22,7 @@ namespace RPSLS
 
         public override string GetChoice()
         { Random random = new Random();
-            int number = random.Next(1, 6);
+            int number = random.Next(0, 5);
 
             string Choice = GetString(number);
             return Choice;
@@ -30,16 +30,17 @@ namespace RPSLS
         public string GetString(int number)
         {
             List<string> Rpsls = new List<string> { "rock", "paper", "scissor", "lizard", "spock" };
-            int count = -1;
+            int count = 0;
             foreach (string element in Rpsls)
             {
                 if (number == count)
                 {
-                    count++;
+                    
                     return element;
                 }
                 else
-                { continue;
+                {
+                    count++;
                 }
             }
             return null;
