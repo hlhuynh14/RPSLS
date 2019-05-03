@@ -18,8 +18,8 @@ namespace RPSLS
         public Player Player1;
         public Player Player2;
         public GameStarter NewGame;
-        
-        
+
+
 
         // constructor
         public GameStarter()
@@ -140,14 +140,14 @@ namespace RPSLS
             if (counter == 3)
             {
                 Console.WriteLine("Player 1 won the game!");
-                Console.ReadLine();
+
 
 
             }
             else
             {
                 Console.WriteLine("Player 2 won the game!");
-                Console.ReadLine();
+
             }
         }
         public string PlayAgain()
@@ -163,10 +163,8 @@ namespace RPSLS
             }
             else
             {
-                Console.WriteLine("See You Again!");
-                Console.ReadLine();
-                return "no";
 
+                return "no";
             }
         }
         public string ValidityCheck(string check)
@@ -196,6 +194,21 @@ namespace RPSLS
                 Console.WriteLine("That's not an option.");
                 return Player1.GetChoice();
             }
+        }
+        public void ShowRules()
+        {
+            Console.WriteLine("Welcome to Rock, Paper, Scissor, Lizard, Spock!");
+            Console.WriteLine("You take turn picking gestures, if you gesture is better than the other player, you win that round.");
+            Console.WriteLine("Best out of 5!");
+            Console.WriteLine("Rock crushes Scissors");
+            Console.WriteLine("Scissors cuts Paper");
+            Console.WriteLine("Paper covers Rock");
+            Console.WriteLine("Rock crushes Lizard");
+            Console.WriteLine("Lizard poisons Spock");
+            Console.WriteLine("Spock smashes Scissors");
+            Console.WriteLine("Scissors decapitates Lizard");
+            Console.WriteLine("Paper disproves Spock");
+            Console.WriteLine("Spock vaporizes Rock");
         }
     }
 }

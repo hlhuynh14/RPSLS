@@ -8,35 +8,27 @@ namespace RPSLS
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            do
-            {
-                GameStarter NewGame = new GameStarter();
-                NewGame.NumbersOfPlayers();
-                NewGame.ScoreCheck();
-               string answer = NewGame.PlayAgain();
+            string answer;
 
-            }
-            while (answer == "yes");
-            {
-                Console.WriteLine("Welcome to Rock, Paper, Scissor, Lizard, Spock!");
-                Console.WriteLine("You take turn picking gestures, if you gesture is better than the other player, you win that round.");
-                Console.WriteLine("Best out of 5!");
-                Console.WriteLine("Rock crushes Scissors");
-                Console.WriteLine("Scissors cuts Paper");
-                Console.WriteLine("Paper covers Rock");
-                Console.WriteLine("Rock crushes Lizard");
-                Console.WriteLine("Lizard poisons Spock");
-                Console.WriteLine("Spock smashes Scissors");
-                Console.WriteLine("Scissors decapitates Lizard");
-                Console.WriteLine("Paper disproves Spock");
-                Console.WriteLine("Spock vaporizes Rock");
+            GameStarter NewGame = new GameStarter();
+            NewGame.ShowRules();
+            NewGame.NumbersOfPlayers();
+            NewGame.ScoreCheck();
+            answer = NewGame.PlayAgain();
 
-                GameStarter NewGame = new GameStarter();
-                NewGame.NumbersOfPlayers();
-                NewGame.ScoreCheck();
+            if ( answer == "yes") { 
+            Main();
             }
+            else
+            {
+                Console.WriteLine("See You Again!");
+                Console.ReadLine();
+            }
+
+
+
         }
 
     }
