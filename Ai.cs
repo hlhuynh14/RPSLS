@@ -27,7 +27,7 @@ namespace RPSLS
             string Choice = GetString(number);
             return Choice;
         }
-        public string GetString(int number)
+        private string GetString(int number)
         {
             List<string> Rpsls = new List<string> { "rock", "paper", "scissor", "lizard", "spock" };
             int count = 0;

@@ -17,19 +17,18 @@ namespace RPSLS
             NewGame.NumbersOfPlayers();
             NewGame.ScoreCheck();
             answer = NewGame.PlayAgain();
-
+    
             if ( answer == "yes") { 
-            Main();
+                Main();
             }
             else
             {
                 Console.WriteLine("See You Again!");
                 Console.ReadLine();
             }
-
-
-
         }
+
+        
 
     }
 }

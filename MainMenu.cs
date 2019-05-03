@@ -13,11 +13,11 @@ namespace RPSLS
         public List<string> ScissorList;
         public List<string> LizardList;
         public List<string> SpockList;
-        public int counter;
-        public int OpponentCounter;
+        //public int counter;
+        //public int OpponentCounter;
         public Player Player1;
         public Player Player2;
-        public GameStarter NewGame;
+        
 
 
 
@@ -29,8 +29,6 @@ namespace RPSLS
             ScissorList = new List<string> {"paper", "lizard", "scissor", "spock", "rock"};
             LizardList = new List<string> {"spock", "paper", "lizard", "scissor", "rock"};
             SpockList = new List<string> {"rock", "scissor", "spock", "paper", "lizard"};
-            counter = 0;
-            OpponentCounter = 0;
            
         }
 
@@ -39,8 +37,8 @@ namespace RPSLS
         public void ScoreCheck()
         {
 
-            while (counter < 3 && OpponentCounter < 3) 
-            { Console.WriteLine($"Current score is {counter} to {OpponentCounter}.");
+            while (Player1.score < 3 && Player2.score < 3) 
+            { Console.WriteLine($"Current score is {Player1.score} to {Player2.score}.");
                 string Gamer1Choice = ValidityCheck(Player1.GetChoice());
                 Console.WriteLine($"Player1 plays {Gamer1Choice}");
                string Gamer2Choice = ValidityCheck(Player2.GetChoice());
@@ -49,10 +47,11 @@ namespace RPSLS
 
                 if (FindWhoWon(Gamer1Choice, Gamer2Choice) > 0)
                 {
-                    counter++;
+                    Player1.score++;
                 }
                 else if (FindWhoWon(Gamer1Choice, Gamer2Choice) < 0)
-                { OpponentCounter++;
+                {
+                    Player2.score++;
                 }
                 else
                 {
@@ -137,7 +136,7 @@ namespace RPSLS
         }
         public void DisplayWinner()
         {
-            if (counter == 3)
+            if (Player1.score == 3)
             {
                 Console.WriteLine("Player 1 won the game!");
 
