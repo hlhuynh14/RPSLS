@@ -66,12 +66,7 @@ namespace RPSLS
             Console.WriteLine("Please enter amount of human players playing, choose between 1 and 2.");
             int number;
             string value = Console.ReadLine();
-            if (Int32.TryParse(value, out number) == false)
-            {
-                Console.WriteLine("Not an option");
-                DetermineNumbersOfPlayers();
-            }
-            else
+            if (Int32.TryParse(value, out number) != false)
             {
                 number = int.Parse(value);
             }
