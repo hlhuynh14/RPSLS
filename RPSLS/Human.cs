@@ -19,8 +19,8 @@ namespace RPSLS
         public override string GetChoice()
         {
             Console.WriteLine("What will you play? Options are rock, paper, scissor, lizard, or spock.");
-            string Choice = Console.ReadLine();
-            return Choice;
+            string choice = Console.ReadLine();
+            return choice;
         }
     }
 }

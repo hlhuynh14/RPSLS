@@ -8,15 +8,15 @@ namespace RPSLS
 {
     class GameStarter
     {   // member variables (HAS A)
-        public List<string> RockList;
-        public List<string> PaperList;
-        public List<string> ScissorList;
-        public List<string> LizardList;
-        public List<string> SpockList;
+        public List<string> rockList;
+        public List<string> paperList;
+        public List<string> scissorList;
+        public List<string> lizardList;
+        public List<string> spockList;
         //public int counter;
         //public int OpponentCounter;
-        public Player Player1;
-        public Player Player2;
+        public Player player1;
+        public Player player2;
         
 
 
@@ -24,108 +24,120 @@ namespace RPSLS
         // constructor
         public GameStarter()
         {
-            RockList = new List<string> {"lizard", "scissor", "rock", "paper", "spock"};
-            PaperList = new List<string> {"spock", "rock", "paper", "scissor", "lizard"};
-            ScissorList = new List<string> {"paper", "lizard", "scissor", "spock", "rock"};
-            LizardList = new List<string> {"spock", "paper", "lizard", "scissor", "rock"};
-            SpockList = new List<string> {"rock", "scissor", "spock", "paper", "lizard"};
+            rockList = new List<string> {"lizard", "scissor", "rock", "paper", "spock"};
+            paperList = new List<string> {"spock", "rock", "paper", "scissor", "lizard"};
+            scissorList = new List<string> {"paper", "lizard", "scissor", "spock", "rock"};
+            lizardList = new List<string> {"spock", "paper", "lizard", "scissor", "rock"};
+            spockList = new List<string> {"rock", "scissor", "spock", "paper", "lizard"};
            
         }
 
         // member methods (CAN DO)
 
-        public void ScoreCheck()
+        public void PlayGame()
         {
 
-            while (Player1.score < 3 && Player2.score < 3) 
-            { Console.WriteLine($"Current score is {Player1.score} to {Player2.score}.");
-                string Gamer1Choice = ValidityCheck(Player1.GetChoice());
+            while (player1.score < 3 &&player2.score < 3) 
+            { Console.WriteLine($"Current score is {player1.score} to {player2.score}.");
+                string Gamer1Choice = CheckValidity(player1.GetChoice());
                 Console.WriteLine($"Player1 plays {Gamer1Choice}");
-               string Gamer2Choice = ValidityCheck(Player2.GetChoice());
+               string Gamer2Choice = CheckValidity(player2.GetChoice());
                 Console.WriteLine($"Player2 plays {Gamer2Choice}");
 
 
                 if (FindWhoWon(Gamer1Choice, Gamer2Choice) > 0)
                 {
-                    Player1.score++;
+                    player1.score++;
                 }
                 else if (FindWhoWon(Gamer1Choice, Gamer2Choice) < 0)
                 {
-                    Player2.score++;
+                    player2.score++;
                 }
                 else
                 {
-                    ScoreCheck();
+                    PlayGame();
 
                 }
             }
             DisplayWinner();
         }
-        public void NumbersOfPlayers()
-        {
+        public void DetermineNumbersOfPlayers()
+        {   
             Console.WriteLine("Please enter amount of human players playing, choose between 1 and 2.");
-            int Players = int.Parse(Console.ReadLine());
-            CreatePlayers(Players);
+            int number;
+            string value = Console.ReadLine();
+            if (Int32.TryParse(value, out number) == false)
+            {
+                Console.WriteLine("Not an option");
+                DetermineNumbersOfPlayers();
+            }
+            else
+            {
+                number = int.Parse(value);
+            }
+            CreatePlayers(number);
         }
 
 
         public void CreatePlayers(int number)
         {
+           
             if (number == 2)
             {
-                Player1 = new Human();
-                Player2 = new Human();
+                player1 = new Human();
+                player2 = new Human();
             }
             else if (number == 1)
             {
-                Player1 = new Human();
-                Player2 = new Ai();
+                player1 = new Human();
+                player2 = new Ai();
             }
+
             else
             {
                 Console.WriteLine("Not an option");
-                NumbersOfPlayers();
+                DetermineNumbersOfPlayers();
             }
 
         }
-        Double FindWhoWon(string Player1Choice, string Player2Choice)                                                                                          
+        Double FindWhoWon(string player1Choice, string player2Choice)                                                                                          
         {
-            switch (Player1Choice)
+            switch (player1Choice)
             {
                 case "rock":
                     {
-                        int Player1Point = 2;
-                        int Player2Point = RockList.IndexOf(Player2Choice);
-                        int Total = Player1Point - Player2Point;
-                        return Total;
+                        int player1Point = 2;
+                        int player2Point = rockList.IndexOf(player2Choice);
+                        int total = player1Point - player2Point;
+                        return total;
                     }
                 case "paper":
                     {
-                        int Player1Point = 2;
-                        int Player2Point = PaperList.IndexOf(Player2Choice);
-                        int Total = Player1Point - Player2Point;
-                        return Total;
+                        int player1Point = 2;
+                        int player2Point = paperList.IndexOf(player2Choice);
+                        int total = player1Point - player2Point;
+                        return total;
                     }
                 case "scissor":
                     {
-                        int Player1Point = 2;
-                        int Player2Point = ScissorList.IndexOf(Player2Choice);
-                        int Total = Player1Point - Player2Point;
-                        return Total;
+                        int player1Point = 2;
+                        int player2Point = scissorList.IndexOf(player2Choice);
+                        int total = player1Point - player2Point;
+                        return total;
                     }
                 case "lizard":
                     {
-                        int Player1Point = 2;
-                        int Player2Point = LizardList.IndexOf(Player2Choice);
-                        int Total = Player1Point - Player2Point;
-                        return Total;
+                        int player1Point = 2;
+                        int player2Point = lizardList.IndexOf(player2Choice);
+                        int total = player1Point - player2Point;
+                        return total;
                     }
                 case "spock":
                     {
-                        int Player1Point = 2;
-                        int Player2Point = SpockList.IndexOf(Player2Choice);
-                        int Total = Player1Point - Player2Point;
-                        return Total;
+                        int player1Point = 2;
+                        int player2Point = spockList.IndexOf(player2Choice);
+                        int total = player1Point - player2Point;
+                        return total;
                     }
                 default:
                     {
@@ -136,7 +148,7 @@ namespace RPSLS
         }
         public void DisplayWinner()
         {
-            if (Player1.score == 3)
+            if (player1.score == 3)
             {
                 Console.WriteLine("Player 1 won the game!");
 
@@ -166,7 +178,7 @@ namespace RPSLS
                 return "no";
             }
         }
-        public string ValidityCheck(string check)
+        public string CheckValidity(string check)
         {
             if (check == "rock")
             {
@@ -191,7 +203,7 @@ namespace RPSLS
             else
             {
                 Console.WriteLine("That's not an option.");
-                return Player1.GetChoice();
+                return player1.GetChoice();
             }
         }
         public void ShowRules()

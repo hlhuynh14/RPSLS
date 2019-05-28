@@ -14,8 +14,8 @@ namespace RPSLS
 
             GameStarter NewGame = new GameStarter();
             NewGame.ShowRules();
-            NewGame.NumbersOfPlayers();
-            NewGame.ScoreCheck();
+            NewGame.DetermineNumbersOfPlayers();
+            NewGame.PlayGame();
             answer = NewGame.PlayAgain();
     
             if ( answer == "yes") { 
