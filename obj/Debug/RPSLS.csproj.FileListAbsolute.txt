@@ -1,7 +1,0 @@
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\obj\Debug\RPSLS.csprojAssemblyReference.cache
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\obj\Debug\RPSLS.csproj.CoreCompileInputs.cache
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\bin\Debug\RPSLS.exe.config
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\bin\Debug\RPSLS.exe
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\bin\Debug\RPSLS.pdb
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\obj\Debug\RPSLS.exe
-C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\RPSLS\RPSLS\RPSLS\obj\Debug\RPSLS.pdb
